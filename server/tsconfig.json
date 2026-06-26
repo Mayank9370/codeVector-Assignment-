@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    /* ─── Output ─── */
+    "target": "ES2022",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "rootDir": "./src",
+
+    /* ─── Module Resolution ─── */
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+
+    /* ─── Strictness ─── */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* ─── Source Maps ─── */
+    "sourceMap": true,
+
+    /* ─── Emit ─── */
+    "declaration": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}
