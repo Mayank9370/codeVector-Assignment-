@@ -23,16 +23,9 @@ dotenv.config();
 // ─────────────────────────────────────────────────────────────
 const envSchema = z.object({
   // Server
-  PORT: z
-    .coerce.number()
-    .int()
-    .min(1)
-    .max(65535)
-    .default(3000),
+  PORT: z.coerce.number().int().min(1).max(65535).default(3000),
 
-  NODE_ENV: z
-    .enum(['development', 'production', 'test'])
-    .default('development'),
+  NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
 
   // Database (Supabase PostgreSQL)
   DATABASE_URL: z
@@ -40,9 +33,7 @@ const envSchema = z.object({
     .url({ message: 'DATABASE_URL must be a valid PostgreSQL connection string' }),
 
   // CORS (the React frontend's URL)
-  CORS_ORIGIN: z
-    .string()
-    .default('http://localhost:5173'),
+  CORS_ORIGIN: z.string().default('http://localhost:5173'),
 });
 
 // ─────────────────────────────────────────────────────────────

@@ -60,7 +60,6 @@ import { AppError } from '../utils/appError';
 //       → returns middleware  ← the actual function Express runs
 // ─────────────────────────────────────────────────────────────
 export function validateQuery<T>(schema: ZodSchema<T>) {
-
   // ─────────────────────────────────────────────────────────
   // This is the actual middleware function that Express calls
   // for every matching request.
@@ -72,7 +71,6 @@ export function validateQuery<T>(schema: ZodSchema<T>) {
   // function has returned.
   // ─────────────────────────────────────────────────────────
   return (req: Request, _res: Response, next: NextFunction): void => {
-
     // ─────────────────────────────────────────────────────────
     // safeParse vs parse
     //
@@ -114,14 +112,7 @@ export function validateQuery<T>(schema: ZodSchema<T>) {
     if (!result.success) {
       const fieldErrors = result.error.flatten().fieldErrors;
 
-      next(
-        new AppError(
-          400,
-          'VALIDATION_ERROR',
-          'Invalid query parameters',
-          fieldErrors,
-        ),
-      );
+      next(new AppError(400, 'VALIDATION_ERROR', 'Invalid query parameters', fieldErrors));
       return;
     }
 

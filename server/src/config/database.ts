@@ -31,9 +31,7 @@ const pool = new Pool({
   // In a production enterprise app, you'd pin the CA certificate.
   // For an internship assignment, this is the pragmatic choice.
   // ─────────────────────────────────────────────────────────
-  ssl: env.NODE_ENV === 'production'
-    ? { rejectUnauthorized: false }
-    : false,
+  ssl: env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
 });
 
 // ─────────────────────────────────────────────────────────────

@@ -20,21 +20,13 @@ import { env } from '../config/environment';
 // service, repository — it ends up here, and the client
 // always gets a consistent JSON error response.
 // ─────────────────────────────────────────────────────────────
-export function errorHandler(
-  err: Error,
-  _req: Request,
-  res: Response,
-  _next: NextFunction,
-): void {
-
+export function errorHandler(err: Error, _req: Request, res: Response, _next: NextFunction): void {
   // ─────────────────────────────────────────────────────────
   // Case 1: Known application error (we threw it ourselves).
   // We know the status code, error code, and message.
   // ─────────────────────────────────────────────────────────
   if (err instanceof AppError) {
-    res.status(err.statusCode).json(
-      errorResponse(err.code, err.message, err.details),
-    );
+    res.status(err.statusCode).json(errorResponse(err.code, err.message, err.details));
     return;
   }
 
@@ -52,11 +44,7 @@ export function errorHandler(
   // eslint-disable-next-line no-console
   console.error('🔴 Unhandled error:', err);
 
-  const message = env.NODE_ENV === 'development'
-    ? err.message
-    : 'An unexpected error occurred';
+  const message = env.NODE_ENV === 'development' ? err.message : 'An unexpected error occurred';
 
-  res.status(500).json(
-    errorResponse('INTERNAL_ERROR', message),
-  );
+  res.status(500).json(errorResponse('INTERNAL_ERROR', message));
 }

@@ -52,12 +52,12 @@
 // financial data. The frontend can parse it when needed.
 // ─────────────────────────────────────────────────────────────
 export interface Product {
-  id: string;            // UUID — primary key
-  name: string;          // Product name (VARCHAR 255)
-  category: string;      // Product category (VARCHAR 100)
-  price: string;         // NUMERIC(10,2) — string to avoid float precision issues
-  created_at: string;    // ISO 8601 timestamp — when the product was added
-  updated_at: string;    // ISO 8601 timestamp — when the product was last modified
+  id: string; // UUID — primary key
+  name: string; // Product name (VARCHAR 255)
+  category: string; // Product category (VARCHAR 100)
+  price: string; // NUMERIC(10,2) — string to avoid float precision issues
+  created_at: string; // ISO 8601 timestamp — when the product was added
+  updated_at: string; // ISO 8601 timestamp — when the product was last modified
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -88,8 +88,8 @@ export interface Product {
 // independent, stable contract.
 // ─────────────────────────────────────────────────────────────
 export interface CursorPayload {
-  created_at: string;    // ISO 8601 timestamp from the last item
-  id: string;            // UUID from the last item
+  created_at: string; // ISO 8601 timestamp from the last item
+  id: string; // UUID from the last item
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -121,9 +121,9 @@ export interface CursorPayload {
 // products regardless of category.
 // ─────────────────────────────────────────────────────────────
 export interface ProductQueryParams {
-  cursor?: string;       // Opaque Base64 cursor (undefined on first page)
-  limit: number;         // Items per page (always present after validation, 1-100)
-  category?: string;     // Optional category filter
+  cursor?: string; // Opaque Base64 cursor (undefined on first page)
+  limit: number; // Items per page (always present after validation, 1-100)
+  category?: string; // Optional category filter
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -147,9 +147,9 @@ export interface ProductQueryParams {
 // Explicit null is the cleaner API contract.
 // ─────────────────────────────────────────────────────────────
 export interface PaginationMeta {
-  nextCursor: string | null;   // Base64 cursor for the next page, or null if last page
-  hasMore: boolean;            // true if there are more pages after this one
-  limit: number;               // The page size that was used (echo back for client convenience)
+  nextCursor: string | null; // Base64 cursor for the next page, or null if last page
+  hasMore: boolean; // true if there are more pages after this one
+  limit: number; // The page size that was used (echo back for client convenience)
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -174,6 +174,6 @@ export interface PaginationMeta {
 // violate separation of concerns.
 // ─────────────────────────────────────────────────────────────
 export interface PaginatedResponse<T> {
-  products: T[];               // The items for the current page
-  pagination: PaginationMeta;  // Pagination metadata (cursor, hasMore, limit)
+  products: T[]; // The items for the current page
+  pagination: PaginationMeta; // Pagination metadata (cursor, hasMore, limit)
 }

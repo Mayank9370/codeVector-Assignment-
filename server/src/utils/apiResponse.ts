@@ -49,11 +49,7 @@ export function successResponse<T>(data: T): ApiSuccessResponse<T> {
  *
  * Used by the global error handler — controllers don't call this directly.
  */
-export function errorResponse(
-  code: string,
-  message: string,
-  details?: unknown,
-): ApiErrorResponse {
+export function errorResponse(code: string, message: string, details?: unknown): ApiErrorResponse {
   return {
     success: false,
     error: {

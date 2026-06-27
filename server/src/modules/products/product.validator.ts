@@ -35,7 +35,6 @@ import { z } from 'zod';
 // are always strings. Zod's coerce handles the conversion.
 // ─────────────────────────────────────────────────────────────
 export const productQuerySchema = z.object({
-
   // ─────────────────────────────────────────────────────────
   // cursor
   // ─────────────────────────────────────────────────────────
@@ -64,10 +63,7 @@ export const productQuerySchema = z.object({
   //   ?cursor=  → after transform → undefined (treated as first page)
   //   ?cursor=abc123 → stays as "abc123"
   // ─────────────────────────────────────────────────────────
-  cursor: z
-    .string()
-    .min(1)
-    .optional(),
+  cursor: z.string().min(1).optional(),
 
   // ─────────────────────────────────────────────────────────
   // limit
@@ -114,8 +110,8 @@ export const productQuerySchema = z.object({
   //   3. Having the default in one place prevents the controller
   //      and service from each applying different defaults.
   // ─────────────────────────────────────────────────────────
-  limit: z
-    .coerce.number()
+  limit: z.coerce
+    .number()
     .int({ message: 'limit must be a whole number' })
     .min(1, { message: 'limit must be at least 1' })
     .max(100, { message: 'limit must be at most 100' })

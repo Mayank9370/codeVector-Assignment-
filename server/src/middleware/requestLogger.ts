@@ -22,11 +22,7 @@ import { env } from '../config/environment';
 // assignment, writing your own teaches you how middleware
 // works. Plus, it's 15 lines — not worth a dependency.
 // ─────────────────────────────────────────────────────────────
-export function requestLogger(
-  req: Request,
-  res: Response,
-  next: NextFunction,
-): void {
+export function requestLogger(req: Request, res: Response, next: NextFunction): void {
   // Skip logging in test environment to keep test output clean.
   if (env.NODE_ENV === 'test') {
     next();

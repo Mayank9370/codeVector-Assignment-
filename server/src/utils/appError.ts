@@ -21,12 +21,7 @@ export class AppError extends Error {
   public readonly code: string;
   public readonly details?: unknown;
 
-  constructor(
-    statusCode: number,
-    code: string,
-    message: string,
-    details?: unknown,
-  ) {
+  constructor(statusCode: number, code: string, message: string, details?: unknown) {
     // Call the parent Error constructor with the message.
     // This sets this.message and this.stack.
     super(message);

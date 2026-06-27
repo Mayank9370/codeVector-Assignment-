@@ -3,6 +3,7 @@ import { env } from './config';
 import { requestLogger } from './middleware/requestLogger';
 import { errorHandler } from './middleware/errorHandler';
 import healthRouter from './modules/health/health.router';
+import { productRouter } from './modules/products/product.router';
 
 // ─────────────────────────────────────────────────────────────
 // Express application factory.
@@ -80,8 +81,8 @@ app.use((_req, res, next) => {
 
 app.use('/health', healthRouter);
 
-// Product routes will be added here in the next step:
-// app.use('/api/products', productRouter);
+// Product routes
+app.use('/api/products', productRouter);
 
 // ─────────────────────────────────────────────────────────────
 // ERROR HANDLER — must be registered AFTER all routes.

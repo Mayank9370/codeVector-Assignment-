@@ -46,12 +46,7 @@ healthRouter.get('/', async (_req: Request, res: Response) => {
     // Database is unreachable — report unhealthy.
     // We still return JSON (not a crash) so monitoring
     // tools can parse the response.
-    res.status(503).json(
-      errorResponse(
-        'SERVICE_UNAVAILABLE',
-        'Database connection failed',
-      ),
-    );
+    res.status(503).json(errorResponse('SERVICE_UNAVAILABLE', 'Database connection failed'));
   }
 });
 

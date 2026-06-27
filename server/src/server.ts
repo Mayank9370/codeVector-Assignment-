@@ -109,7 +109,6 @@ import { env, testConnection, closePool } from './config';
 
     process.on('SIGTERM', () => shutdown('SIGTERM'));
     process.on('SIGINT', () => shutdown('SIGINT'));
-
   } catch (error) {
     // ─────────────────────────────────────────────────────────
     // If database connection fails at startup, log and exit.
