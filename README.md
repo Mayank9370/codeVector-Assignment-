@@ -35,8 +35,30 @@ npm run dev
 ```bash
 cd client
 npm install
+cp .env.example .env    # Configure your VITE_API_BASE_URL env var
 npm run dev
 ```
+
+## Environment Configuration
+
+Both the frontend and backend require configuration variables to adapt across environments.
+
+### Backend Configurations (`server/.env`)
+
+Configure the following variables in `server/.env`:
+* `PORT` (default `3000`): Port the Express API server listens on.
+* `DATABASE_URL`: PostgreSQL JDBC connection string (SSL is auto-configured in production).
+* `CORS_ORIGIN`: Allowed origins for API requests (usually the client URL).
+* `NODE_ENV`: Runs as `development`, `production`, or `test`.
+
+### Frontend Configurations (`client/.env`)
+
+Configure the following variables in `client/.env`:
+* `VITE_API_BASE_URL`: The absolute or relative endpoint URL pointing to the Express server.
+  * For local dev setup: `http://localhost:3000/api`
+  * For single-domain/proxy staging or production: `/api`
+
+The client application includes a validation check in [env.ts](file:///d:/Assignment2/Products/client/src/config/env.ts) during startup. If `VITE_API_BASE_URL` is undefined, the application will print a clear console error and fail fast immediately.
 
 ## Tech Stack
 
@@ -46,3 +68,4 @@ npm run dev
 | Database | PostgreSQL (Supabase) |
 | Frontend | React, TypeScript, Vite |
 | Validation | Zod |
+

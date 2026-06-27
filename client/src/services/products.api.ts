@@ -3,6 +3,7 @@
 // ─────────────────────────────────────────────────────────────
 
 import { PaginatedResponse, ApiResponse } from '../types/products';
+import { env } from '../config/env';
 
 export interface FetchProductsParams {
   category?: string;
@@ -18,7 +19,7 @@ export interface FetchProductsParams {
  * @returns PaginatedResponse object containing items and metadata.
  */
 export async function fetchProducts({ category, limit, cursor }: FetchProductsParams): Promise<PaginatedResponse> {
-  const url = new URL('/api/products', window.location.origin);
+  const url = new URL(`${env.API_BASE_URL}/products`, window.location.origin);
 
   if (category && category !== 'all') {
     url.searchParams.append('category', category);
